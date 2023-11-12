@@ -39,22 +39,29 @@
             </tr>
         {% endfor %}
         </tbody>
+        </table>
 
 
+   <div class="container">
+		<div class="row">
+			<div class="col-12 col-sm-4 col-md-8 col-lg-6 text-center ">
    
-   
-    <table class="table">
-        <thead>
-            <tr>
-                 <th>n° commande</th>
-                 <th>date</th>
-                <th>produits</th>
-                <th>prix</th>
-                <th>quantite</th>
-                 <th>adresse livraison</th> 
-                 <th>adresse_facturation</th> 
-            </tr>
-        </thead>
+    {# <table class="table"> #}
+        {# <thead> #}
+
+            {# <tr> #}
+            <div class="container">
+		<div class="row">
+			<div class="col-12  text-center ">
+                 <h4>n° commande</h4>
+                 <h4>date</h4>
+                <h4>produits</h4>
+                <h4>prix</h4>
+                <h4>quantite</h4>
+                 <h4>adresse livraison</h4> 
+                 <h4>adresse_facturation</h4> 
+            {# </tr>
+        </thead> #}
         <tbody>
         {% for facture in factures %}
 
@@ -66,14 +73,14 @@
                  <td>{{ facture.adresse1 }}</td>
                  <td>{{ facture.adresse2 }}</td>
                  
-                  </tr>
+                  </div>
         {# {% else %}
             <tr>
                 <td colspan="6">no records found</td>
             </tr>
         {% endfor %}
         </tbody> #}
-    </table>
+    {# </table> #}
                     {# <a href="{{ path('app_facture_show', {'id': facture.id}) }}">show</a>
                     <a href="{{ path('app_facture_edit', {'id': facture.id}) }}">edit</a> #}
                 </td>
@@ -84,7 +91,7 @@
             </tr>
         {% endfor %}
         </tbody>
-    </table>
+    
 
-    <a href="{{ path('app_facture_new') }}">Create new</a>
+    {# <a href="{{ path('app_facture_new') }}">Create new</a> #}
 {% endblock %}
