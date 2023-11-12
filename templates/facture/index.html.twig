@@ -25,8 +25,8 @@
                 <td>{{ commande.p_nom }}</td>
                 <td>{{ commande.prix }}</td>
                  <td>{{ commande.quantite }}</td> #}
-                 <td>{{ commande.adresse_livraison }}</td>
-                 <td>{{ commande.adresse_facturation }}</td>
+                 <td>{{ facture.adresse1 }}</td>
+                 <td>{{ facture.adresse2 }}</td>
                  
                   </tr>
         {% else %}
@@ -54,13 +54,13 @@
         <tbody>
         {% for facture in factures %}
 
-               <td>{{ commande.com_id }}</td>
-               <td>{{ commande.date|date("Y-m-d H:i:s") }}</td>
-                <td>{{ commande.p_nom }}</td>
-                <td>{{ commande.prix }}</td>
-                 <td>{{ commande.quantite }}</td>
-                 <td>{{ commande.adresse_livraison }}</td>
-                 <td>{{ commande.adresse_facturation }}</td>
+               {# <td>{{ commande.com_id }}</td>
+               <td>{{ commande.date|date("Y-m-d H:i:s") }}</td> #}
+                {# <td>{{ facture.cli_nom }}</td> #}
+                <td>{{ facture.prix }}</td>
+                 <td>{{ facture.quantite }}</td>
+                 <td>{{ facture.adresse1 }}</td>
+                 <td>{{ facture.adresse2 }}</td>
                  
                   </tr>
         {# {% else %}
@@ -70,8 +70,8 @@
         {% endfor %}
         </tbody> #}
     </table>
-                    <a href="{{ path('app_facture_show', {'id': facture.id}) }}">show</a>
-                    <a href="{{ path('app_facture_edit', {'id': facture.id}) }}">edit</a>
+                    {# <a href="{{ path('app_facture_show', {'id': facture.id}) }}">show</a>
+                    <a href="{{ path('app_facture_edit', {'id': facture.id}) }}">edit</a> #}
                 </td>
             </tr>
         {% else %}

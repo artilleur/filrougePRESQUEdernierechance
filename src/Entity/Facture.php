@@ -48,7 +48,7 @@ class Facture
      #[ORM\ManyToOne(inversedBy: 'factures')]
      private ?CommandeDetail $pro_quantite = null;
 
-     public function getCliNom(): ?Utilisateur
+     public function getNom(): ?Utilisateur
      {
          return $this->cli_nom;
      }
@@ -144,7 +144,7 @@ class Facture
          return $this;
      }
 
-     public function getProPrix(): ?CommandeDetail
+     public function getPrix(): ?CommandeDetail
      {
          return $this->pro_prix;
      }
@@ -156,7 +156,7 @@ class Facture
          return $this;
      }
 
-     public function getProQuantite(): ?CommandeDetail
+     public function getQuantite(): ?CommandeDetail
      {
          return $this->pro_quantite;
      }
