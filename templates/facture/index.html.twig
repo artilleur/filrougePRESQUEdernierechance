@@ -7,18 +7,26 @@
 <div class="container">
 		<div class="row">
 			<div class="col-12  text-center ">
-    <h1>Facture N° :</h1>
 
+ <h1>Facture N° :</h1>
+ </div>
+
+
+<div class="container">
+		<div class="row">
+			<div class="col-12  text-center ">
+    
+ <div>
      <table class="table">
         <thead>
             <tr>
-                 {# <th>n° commande</th>
-                 <th>date</th>
-                <th>produits</th>
-                <th>prix</th>
-                <th>quantite</th> #}
-                 <th>adresse livraison</th> 
-                 <th>adresse_facturation</th> 
+                 <th>nom </th>
+                 <th>prenom</th>
+                <th>adresse</th>
+                <th>cp</th>
+                <th>ville</th>
+                 <th>email</th> 
+                 <th>telephone</th> 
             </tr>
         </thead>
         <tbody>
@@ -33,6 +41,50 @@
                  <td>{{ facture.adresse2 }}</td>
                  
                   </tr>
+                  </div>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+        </table>
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
+
+<div class="container">
+		<div class="row">
+			<div class="col-12  text-center ">
+   
+ <div>
+     <table class="table">
+        <thead>
+            <tr>
+                 {# <th>n° commande</th>
+                 <th>date</th>
+                <th>produits</th>
+                <th>prix</th>
+                <th>quantite</th> #}
+                 <th>adresse livraison</th> 
+                 <th>adresse facturation</th> 
+            </tr>
+        </thead>
+        <tbody>
+        {% for facture in factures %}
+
+               {# <td>{{ commande.com_id }}</td>
+               <td>{{ commande.date|date("Y-m-d H:i:s") }}</td>
+                <td>{{ commande.p_nom }}</td>
+                <td>{{ commande.prix }}</td>
+                 <td>{{ commande.quantite }}</td> #}
+                 <td>{{ facture.adresse1 }}</td>
+                 <td>{{ facture.adresse2 }}</td>
+                 
+                  </tr>
+                  </div>
         {% else %}
             <tr>
                 <td colspan="6">no records found</td>
@@ -52,14 +104,20 @@
             {# <tr> #}
             <div class="container">
 		<div class="row">
-			<div class="col-12  text-center ">
-                 <h4>n° commande</h4>
-                 <h4>date</h4>
-                <h4>produits</h4>
-                <h4>prix</h4>
-                <h4>quantite</h4>
-                 <h4>adresse livraison</h4> 
-                 <h4>adresse_facturation</h4> 
+			<div class="col-12 col-sm-4 col-md-8 col-lg-6  text-center ">
+                 <th>n° commande</th>
+                 <br>
+                 <th>date</th>
+                 <br>
+                <th>produits</th>
+                <br>
+                <th>prix</th>
+                <br>
+                <th>quantite</th>
+                <br>
+                 <th>adresse livraison</th> 
+                 <br>
+                 <th>adresse_facturation</th> 
             {# </tr>
         </thead> #}
         <tbody>
@@ -91,6 +149,7 @@
             </tr>
         {% endfor %}
         </tbody>
+        </div>
     
 
     {# <a href="{{ path('app_facture_new') }}">Create new</a> #}
