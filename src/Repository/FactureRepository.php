@@ -21,6 +21,28 @@ class FactureRepository extends ServiceEntityRepository
         parent::__construct($registry, Facture::class);
     }
 
+    public function myfacture($id): array
+    {
+        
+        $qb = $this->createQueryBuilder('c')
+            //->select('c.id as c_id, u.id as user_id, u. pro.id as p_id, produit.nom as p_nom, detail.prix as p_prix, detail.quantite as p_quantite')
+            ->select('f.id as fact_id,c.id as com_id,c.adresse as adresse_livraison, c.adresse_fact as adresse_facturation, u.id as user_id,  produit.nom as p_nom, detail.prix as prix, detail.quantite as quantite, c.date_commande as date')
+            ->join('c.utilisateur', 'u')
+            ->join('c.commandeDetails', 'detail')
+            ->join('detail.pro', 'produit')
+            ->where('u.id = :comUtiId')
+            ->setParameter('comUtiId', $id);
+          
+    
+        $query = $qb->getQuery();
+    
+        return $query->execute();
+        // return $query->getResult();
+    
+        // to get just one result:
+        // $product = $query->setMaxResults(1)->getOneOrNullResult();
+    }
+
 //    /**
 //     * @return Facture[] Returns an array of Facture objects
 //     */

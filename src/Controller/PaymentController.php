@@ -164,9 +164,9 @@ $checkout_session = \Stripe\Checkout\Session::create([
         $order = $this->em->getRepository(Commande::class)->findOneBy(['id' => $id]);
         //$order->setComIsPaid(true);
         $facture=new Facture();
-        $facture->setCliNom($this->getUser());
-        $facture->setAdresse1($facture->getAdresse2());
-
+        $facture->setCliNom($this->getUser()->getNom());
+        $facture->setAdresseLivraison($order->getAdresseFact());
+        $facture->setIdCommande($order->getId());
         $em->persist($order);
         $em->persist($facture);
         $em->flush();

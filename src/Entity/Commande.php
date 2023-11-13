@@ -46,8 +46,11 @@ class Commande
     #[ORM\Column(length: 255)]
     private ?string $commentaire = null;
 
-    #[ORM\OneToMany(mappedBy: 'adresse1', targetEntity: Facture::class)]
-    private Collection $factures;
+    #[ORM\OneToMany(mappedBy: 'com_id', targetEntity: Facture::class)]
+    private Collection $Commande;
+
+    // #[ORM\OneToMany(mappedBy: 'adresse1', targetEntity: Facture::class)]
+    // private Collection $factures;
 
    
 
@@ -55,7 +58,8 @@ class Commande
     {
         $this->commandeDetails = new ArrayCollection();
         $this->date_commande= new  DateTimeImmutable( );
-        $this->factures = new ArrayCollection();
+        // $this->factures = new ArrayCollection();
+        $this->Commande = new ArrayCollection();
         
     }
 
@@ -163,30 +167,60 @@ class Commande
         return $this;
     }
 
+    // /**
+    //  * @return Collection<int, Facture>
+    //  */
+    // public function getFactures(): Collection
+    // {
+    //     return $this->factures;
+    // }
+
+    // public function addFacture(Facture $facture): ?static
+    // {
+    //     if (!$this->factures->contains($facture)) {
+    //         $this->factures->add($facture);
+    //         $facture->setAdresse1($this);
+    //     }
+
+    //     return $this;
+    // }
+
+    // public function removeFacture(Facture $facture): ?static
+    // {
+    //     if ($this->factures->removeElement($facture)) {
+    //         // set the owning side to null (unless already changed)
+    //         if ($facture->getAdresse1() === $this) {
+    //             $facture->setAdresse1(null);
+    //         }
+    //     }
+
+    //     return $this;
+    // }
+
     /**
      * @return Collection<int, Facture>
      */
-    public function getFactures(): Collection
+    public function getCommande(): Collection
     {
-        return $this->factures;
+        return $this->Commande;
     }
 
-    public function addFacture(Facture $facture): ?static
+    public function addCommande(Facture $commande): static
     {
-        if (!$this->factures->contains($facture)) {
-            $this->factures->add($facture);
-            $facture->setAdresse1($this);
+        if (!$this->Commande->contains($commande)) {
+            $this->Commande->add($commande);
+            $commande->setComId($this);
         }
 
         return $this;
     }
 
-    public function removeFacture(Facture $facture): ?static
+    public function removeCommande(Facture $commande): static
     {
-        if ($this->factures->removeElement($facture)) {
+        if ($this->Commande->removeElement($commande)) {
             // set the owning side to null (unless already changed)
-            if ($facture->getAdresse1() === $this) {
-                $facture->setAdresse1(null);
+            if ($commande->getComId() === $this) {
+                $commande->setComId(null);
             }
         }
 

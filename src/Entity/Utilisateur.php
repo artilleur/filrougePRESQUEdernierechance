@@ -66,8 +66,11 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'uti', targetEntity: Adresse::class)]
     private Collection $adresses;
 
-    #[ORM\OneToMany(mappedBy: 'cli_nom', targetEntity: Facture::class)]
-    private Collection $factures;
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Facture::class)]
+    private Collection $Utilisateur;
+
+    // #[ORM\OneToMany(mappedBy: 'cli_nom', targetEntity: Facture::class)]
+    // private Collection $factures;
 
    
 
@@ -75,7 +78,8 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
     {
         $this->commandes = new ArrayCollection();
         $this->adresses = new ArrayCollection();
-        $this->factures = new ArrayCollection();
+        // $this->factures = new ArrayCollection();
+        $this->Utilisateur = new ArrayCollection();
         
     }
 
@@ -312,30 +316,60 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
+    // /**
+    //  * @return Collection<int, Facture>
+    //  */
+    // public function getFactures(): Collection
+    // {
+    //     return $this->factures;
+    // }
+
+    // public function addFacture(Facture $facture): ?static
+    // {
+    //     if (!$this->factures->contains($facture)) {
+    //         $this->factures->add($facture);
+    //         $facture->setCliNom($this);
+    //     }
+
+    //     return $this;
+    // }
+
+    // public function removeFacture(Facture $facture): ?static
+    // {
+    //     if ($this->factures->removeElement($facture)) {
+    //         // set the owning side to null (unless already changed)
+    //         if ($facture->getCliNom() === $this) {
+    //             $facture->setCliNom(null);
+    //         }
+    //     }
+
+    //     return $this;
+    // }
+
     /**
      * @return Collection<int, Facture>
      */
-    public function getFactures(): Collection
+    public function getUtilisateur(): Collection
     {
-        return $this->factures;
+        return $this->Utilisateur;
     }
 
-    public function addFacture(Facture $facture): ?static
+    public function addUtilisateur(Facture $utilisateur): static
     {
-        if (!$this->factures->contains($facture)) {
-            $this->factures->add($facture);
-            $facture->setCliNom($this);
+        if (!$this->Utilisateur->contains($utilisateur)) {
+            $this->Utilisateur->add($utilisateur);
+            $utilisateur->setUser($this);
         }
 
         return $this;
     }
 
-    public function removeFacture(Facture $facture): ?static
+    public function removeUtilisateur(Facture $utilisateur): static
     {
-        if ($this->factures->removeElement($facture)) {
+        if ($this->Utilisateur->removeElement($utilisateur)) {
             // set the owning side to null (unless already changed)
-            if ($facture->getCliNom() === $this) {
-                $facture->setCliNom(null);
+            if ($utilisateur->getUser() === $this) {
+                $utilisateur->setUser(null);
             }
         }
 

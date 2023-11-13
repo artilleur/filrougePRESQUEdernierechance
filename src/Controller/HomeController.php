@@ -23,7 +23,7 @@ class HomeController extends AbstractController
         // $categories = $paginator->paginate( $repo->findAll(),
         // $request-> query->getInt('page', 1),
         // 2);
-
+// dd($this->getUser()->getNom());
 
         $categories =  $repo->findAll();
 

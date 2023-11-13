@@ -36,8 +36,11 @@ class CommandeDetail
     #[ORM\JoinColumn(nullable: false)]
     private ?produit $pro = null;
 
-    #[ORM\OneToMany(mappedBy: 'pro_prix', targetEntity: Facture::class)]
+    #[ORM\OneToMany(mappedBy: 'com_detail', targetEntity: Facture::class)]
     private Collection $factures;
+
+    // #[ORM\OneToMany(mappedBy: 'pro_prix', targetEntity: Facture::class)]
+    // private Collection $factures;
 
     public function __construct()
     {
@@ -112,6 +115,36 @@ class CommandeDetail
         return $this;
     }
 
+    // /**
+    //  * @return Collection<int, Facture>
+    //  */
+    // public function getFactures(): Collection
+    // {
+    //     return $this->factures;
+    // }
+
+    // public function addFacture(Facture $facture): static
+    // {
+    //     if (!$this->factures->contains($facture)) {
+    //         $this->factures->add($facture);
+    //         $facture->setProPrix($this);
+    //     }
+
+    //     return $this;
+    // }
+
+    // public function removeFacture(Facture $facture): static
+    // {
+    //     if ($this->factures->removeElement($facture)) {
+    //         // set the owning side to null (unless already changed)
+    //         if ($facture->getProPrix() === $this) {
+    //             $facture->setProPrix(null);
+    //         }
+    //     }
+
+    //     return $this;
+    // }
+
     /**
      * @return Collection<int, Facture>
      */
@@ -124,7 +157,7 @@ class CommandeDetail
     {
         if (!$this->factures->contains($facture)) {
             $this->factures->add($facture);
-            $facture->setProPrix($this);
+            $facture->setComDetail($this);
         }
 
         return $this;
@@ -134,8 +167,8 @@ class CommandeDetail
     {
         if ($this->factures->removeElement($facture)) {
             // set the owning side to null (unless already changed)
-            if ($facture->getProPrix() === $this) {
-                $facture->setProPrix(null);
+            if ($facture->getComDetail() === $this) {
+                $facture->setComDetail(null);
             }
         }
 
