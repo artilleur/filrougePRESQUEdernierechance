@@ -71,7 +71,7 @@ class FactureController extends AbstractController
     #[Route('/{id}', name: 'app_facture_delete', methods: ['POST'])]
     public function delete(Request $request, Facture $facture, EntityManagerInterface $entityManager): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$facture->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete'.$facture->getid(), $request->request->get('_token'))) {
             $entityManager->remove($facture);
             $entityManager->flush();
         }

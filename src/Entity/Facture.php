@@ -48,12 +48,17 @@ class Facture
      #[ORM\ManyToOne(inversedBy: 'factures')]
      private ?CommandeDetail $pro_quantite = null;
 
+     public function getid(): ?Utilisateur
+     {
+         return $this->fact_id;
+     }
+
      public function getNom(): ?Utilisateur
      {
          return $this->cli_nom;
      }
 
-     public function setCliNom(?Utilisateur $cli_nom): static
+     public function setCliNom(?Utilisateur $cli_nom): ?static
      {
          $this->cli_nom = $cli_nom;
 
@@ -65,7 +70,7 @@ class Facture
          return $this->cli_prenom;
      }
 
-     public function setCliPrenom(?Utilisateur $cli_prenom): static
+     public function setCliPrenom(?Utilisateur $cli_prenom): ?static
      {
          $this->cli_prenom = $cli_prenom;
 
@@ -77,7 +82,7 @@ class Facture
          return $this->cli_adresse;
      }
 
-     public function setCliAdresse(?Utilisateur $cli_adresse): static
+     public function setCliAdresse(?Utilisateur $cli_adresse): ?static
      {
          $this->cli_adresse = $cli_adresse;
 
@@ -89,7 +94,7 @@ class Facture
          return $this->cli_cp;
      }
 
-     public function setCliCp(?Utilisateur $cli_cp): static
+     public function setCliCp(?Utilisateur $cli_cp):? static
      {
          $this->cli_cp = $cli_cp;
 
@@ -101,7 +106,7 @@ class Facture
          return $this->cli_ville;
      }
 
-     public function setCliVille(?Utilisateur $cli_ville): static
+     public function setCliVille(?Utilisateur $cli_ville): ?static
      {
          $this->cli_ville = $cli_ville;
 
@@ -113,7 +118,7 @@ class Facture
          return $this->cli_telephone;
      }
 
-     public function setCliTelephone(?Utilisateur $cli_telephone): static
+     public function setCliTelephone(?Utilisateur $cli_telephone):? static
      {
          $this->cli_telephone = $cli_telephone;
 
@@ -125,7 +130,7 @@ class Facture
          return $this->adresse1;
      }
 
-     public function setAdresse1(?Commande $adresse1): static
+     public function setAdresse1(?Commande $adresse1):? static
      {
          $this->adresse1 = $adresse1;
 
@@ -137,7 +142,7 @@ class Facture
          return $this->adresse2;
      }
 
-     public function setAdresse2(?Commande $adresse2): static
+     public function setAdresse2(?Commande $adresse2): ?static
      {
          $this->adresse2 = $adresse2;
 
@@ -149,7 +154,7 @@ class Facture
          return $this->pro_prix;
      }
 
-     public function setProPrix(?CommandeDetail $pro_prix): static
+     public function setProPrix(?CommandeDetail $pro_prix): ?static
      {
          $this->pro_prix = $pro_prix;
 
@@ -161,7 +166,7 @@ class Facture
          return $this->pro_quantite;
      }
 
-     public function setProQuantite(?CommandeDetail $pro_quantite): static
+     public function setProQuantite(?CommandeDetail $pro_quantite): ?static
      {
          $this->pro_quantite = $pro_quantite;
 

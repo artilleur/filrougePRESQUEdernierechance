@@ -49,7 +49,7 @@ class Adresse
     private ?Utilisateur $uti = null;
 
     #[ORM\OneToMany(mappedBy: 'adresse_livraison', targetEntity: Facture::class)]
-    private Collection $factures;
+    private ?Collection $factures;
 
     public function __construct()
     {
@@ -176,7 +176,7 @@ class Adresse
     {
         if (!$this->factures->contains($facture)) {
             $this->factures->add($facture);
-            $facture->setAdresseLivraison($this);
+            $facture->setAdresse1($this);
         }
 
         return $this;
@@ -186,8 +186,8 @@ class Adresse
     {
         if ($this->factures->removeElement($facture)) {
             // set the owning side to null (unless already changed)
-            if ($facture->getAdresseLivraison() === $this) {
-                $facture->setAdresseLivraison(null);
+            if ($facture->getAdresse1() === $this) {
+                $facture->setAdresse1(null);
             }
         }
 
