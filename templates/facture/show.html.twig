@@ -1,8 +1,13 @@
 {% extends 'base.html.twig' %}
 
+
+
 {% block title %}Facture{% endblock %}
 
 {% block body %}
+
+  
+
 
    <div class="container">
 		<div class="row">
@@ -61,8 +66,8 @@
                 {# <th>date commande</th> #}
                
                 
-                <h4>produit</h4><td>{{ facture.produit }}</td><br> 
-                <h4>prix</h4> <td>{{ facture.prix }}</td><br>
+                <h4>produit</h4><td>{{ facture.produit }}</td>
+                <h4>prix</h4> <td>{{ facture.prix }}</td>
                 <h4>quantite</h4><td>{{ facture.quantite }}</td><br>
 
                 
@@ -94,9 +99,9 @@
         </tbody>
     
 
-    <a href="{{ path('app_facture_index') }}">back to list</a>
+    {# <a href="{{ path('app_facture_index') }}">back to list</a>
 
     {# <a href="{{ path('app_facture_edit', {'id': facture.id}) }}">edit</a> #}
 
-    {{ include('facture/_delete_form.html.twig') }}
+    {# {{ include('facture/_delete_form.html.twig') }}  #}
 {% endblock %}
