@@ -33,14 +33,14 @@ class CommandeCrudController extends AbstractController
             'commandes' => $commandeRepository->myCommande($id)
         ]);
     }
-    #[Route('/facture/{id}', name: 'app_facture', methods: ['GET'])]
+    #[Route('/facture/{id}', name: 'app_commande_mon_index', methods: ['GET'])]
     public function facture(CommandeRepository $commandeRepository, $id): Response
     {
     //     $x = $commandeRepository->findBy(['utilisateur' => $this->getUser()]);
     //     $y = $commandeRepository->myCommande();
     //     dd($y);
     //    // dd($x[2]->getId());
-        return $this->render('facture/index.html.twig', [
+        return $this->render('commande_crud/facture.html.twig', [
             'commandes' => $commandeRepository->myCommande($id)
         ]);
     }

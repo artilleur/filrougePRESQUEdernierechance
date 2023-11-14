@@ -5,9 +5,11 @@ namespace App\Controller;
 use Stripe\Stripe;
 use App\Entity\Produit;
 use App\Entity\Commande;
+use App\Entity\CommandeDetail;
 use App\Entity\Facture;
 use App\Entity\Transporteur;
 use Doctrine\ORM\EntityManagerInterface;
+use Proxies\__CG__\App\Entity\Produit as EntityProduit;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -162,10 +164,22 @@ $checkout_session = \Stripe\Checkout\Session::create([
     #[Route('/order/success/{id}', name: 'payment_success')]
     public function StripeSuccess(EntityManagerInterface $em,$id): Response{
         $order = $this->em->getRepository(Commande::class)->findOneBy(['id' => $id]);
+        $order2 = $this->em->getRepository(CommandeDetail::class)->findOneBy(['id' => $id]);
+        $order3 = $this->em->getRepository(EntityProduit::class)->findOneBy(['id' => $id]);
         //$order->setComIsPaid(true);
         $facture=new Facture();
         $facture->setCliNom($this->getUser()->getNom());
-        $facture->setAdresseLivraison($order->getAdresseFact());
+        $facture->setCliPrenom($this->getUser()->getPrenom());
+        $facture->setCliEmail($this->getUser()->getEmail());
+        $facture->setCliTelephone($this->getUser()->gettelephone());
+        $facture->setAdresseLivraison($order->getAdresse());
+        $facture->setAdresseFacturation($order->getAdresseFact());
+        $facture->setProduit($order3->getNom());
+        $facture->setPrix($order2->getPrix());
+        $facture->setQuantite($order2->getQuantite());
+
+
+
         $facture->setIdCommande($order->getId());
         $em->persist($order);
         $em->persist($facture);

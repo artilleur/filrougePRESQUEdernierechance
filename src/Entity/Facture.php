@@ -57,6 +57,7 @@ class Facture
 
      #[ORM\ManyToOne(inversedBy: 'factures')]
      private ?CommandeDetail $com_detail = null;
+     
 
   
      public function getId(): ?int
@@ -147,18 +148,25 @@ class Facture
 
          return $this;
      }
+     
+    
 
      public function getProduit(): ?string
      {
          return $this->produit;
      }
+     
 
-     public function setProduit(string $produit): static
-     {
-         $this->produit = $produit;
+   
+    //  public function __toString() {
+    //     return $this->produit;
+    // }
+    public function setProduit(string $produit): static
+    {
+        $this->produit = $produit;
 
-         return $this;
-     }
+        return $this;
+    }
 
      public function getPrix(): ?string
      {
