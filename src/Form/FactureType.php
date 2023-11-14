@@ -20,7 +20,7 @@ class FactureType extends AbstractType
             ->add('ville')
             ->add('email')
             ->add('telephone')
-            ->add('prduit')
+            ->add('produit')
             ->add('prix')
             ->add('quantite')
 
