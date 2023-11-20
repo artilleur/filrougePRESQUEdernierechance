@@ -27,9 +27,9 @@ class FactureRepository extends ServiceEntityRepository
         
         $qb = $this->createQueryBuilder('f')
             //->select('c.id as c_id, u.id as user_id, u. pro.id as p_id, produit.nom as p_nom, detail.prix as p_prix, detail.quantite as p_quantite')
-            ->select('f.id as fact_id,c.id as com_id,c.adresse as adresse_livraison, c.adresse_fact as adresse_facturation,   produit.nom as p_nom, detail.prix as prix, detail.quantite as quantite, c.date_commande as date')
+            ->select('f.id as fact_id,c.id as com_id,cd.id as  c.adresse as adresse_livraison, c.adresse_fact as adresse_facturation,   produit.nom as p_nom, detail.prix as prix, detail.quantite as quantite, c.date_commande as date')
             ->join('c.utilisateur', 'u')
-            ->join('c.commandeDetails', 'detail')
+            ->join('commandeDetails', 'detail')
             ->join('detail.pro', 'produit')
             ->join('c.Commande','com')
             ->where('u.id = :comUtiId')

@@ -1,66 +1,34 @@
-{% extends 'base.html.twig' %}
+ {% extends 'base.html.twig' %}
 
-{% block title %}facturation facture{% endblock %}
+{% block title %}facturation facture{% endblock %} 
 
 {% block body %}
-    <h1>Facture</h1>
-
-     <table class="table">
-        <thead>
-            <tr>
-                 {# <th>n° commande</th>
-                 <th>date</th>
-                <th>produits</th>
-                <th>prix</th>
-                <th>quantite</th> #}
-                 <th>adresse livraison</th> 
-                 <th>adresse_facturation</th> 
-            </tr>
-        </thead>
-        <tbody>
-        {% for commande in commandes %}
-
-               {# <td>{{ commande.com_id }}</td>
-               <td>{{ commande.date|date("Y-m-d H:i:s") }}</td>
-                <td>{{ commande.p_nom }}</td>
-                <td>{{ commande.prix }}</td>
-                 <td>{{ commande.quantite }}</td> #}
-                 <td>{{ commande.adresse_livraison }}</td>
-                 <td>{{ commande.adresse_facturation }}</td>
-                 
-                  </tr>
-        {% else %}
-            <tr>
-                <td colspan="6">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-
+   
 
    
    
     <table class="table">
         <thead>
             <tr>
-                 <th>n° commande</th>
-                 <th>date</th>
-                <th>produits</th>
-                <th>prix</th>
-                <th>quantite</th>
-                 <th>adresse livraison</th> 
-                 <th>adresse_facturation</th> 
+                 <th colspan="6">n° commande</th>
+                 <th >date</th>
+                <th colspan="6">produits</th>
+                <th colspan="6">prix</th>
+                <th colspan="6">quantite</th>
+                 <th colspan="6">adresse livraison</th> 
+                 <th colspan="6">adresse_facturation</th> 
             </tr>
         </thead>
         <tbody>
         {% for commande in commandes %}
 
-               <td>{{ commande.com_id }}</td>
-               <td>{{ commande.date|date("Y-m-d H:i:s") }}</td>
-                <td>{{ commande.p_nom }}</td>
-                <td>{{ commande.prix }}</td>
-                 <td>{{ commande.quantite }}</td>
-                 <td>{{ commande.adresse_livraison }}</td>
-                 <td>{{ commande.adresse_facturation }}</td>
+                <td colspan="6">{{ commande.com_id }}</td>
+               <td colspan="5">{{ commande.date|date("Y-m-d H:i:s") }}</td>
+                <td colspan="6">{{ commande.p_nom }}</td>
+                <td colspan="6">{{ commande.prix }}</td>
+                 <td colspan="6">{{ commande.quantite }}</td>
+                 <td colspan="6">{{ commande.adresse_livraison }}</td>
+                 <td colspan="6">{{ commande.adresse_facturation }}</td>
                  
                   </tr>
         {% else %}
@@ -71,5 +39,5 @@
         </tbody>
     </table>
 
-     <a href="{{ path('app_commande_crud_show', {'id': .id}) }}">show</a>
-{% endblock %}
+     {# <a href="{{ path('app_commande_crud_show', {'id': .id}) }}">show</a> #}
+ {% endblock %}  

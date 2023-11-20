@@ -1,0 +1,24 @@
+{# templates/facturation/facture.html.twig #}
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Facturation Facture{% endblock %}
+
+{% block body %}
+    <table class="table">
+        <!-- ... Votre tableau avec les en-têtes -->
+
+        <tbody>
+            {% for commande in commandes %}
+                <tr>
+                    <td colspan="6">{{ commande.com_id }}</td>
+                    <!-- ... Ajoutez les autres colonnes avec les données nécessaires -->
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="6">Aucun enregistrement trouvé</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

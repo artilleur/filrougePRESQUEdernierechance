@@ -2,74 +2,99 @@
 
 {% block title %}facturation facture{% endblock %}
 
+{# templates/facturation/facture.html.twig #}
+
+
+
 {% block body %}
-    <h1>Facture</h1>
+    {# <table class="table">
+        <!-- ... Votre tableau avec les en-têtes -->
 
-     <table class="table">
-        <thead>
-            <tr>
-                 {# <th>n° commande</th>
-                 <th>date</th>
-                <th>produits</th>
-                <th>prix</th>
-                <th>quantite</th> #}
-                 <th>adresse livraison</th> 
-                 <th>adresse_facturation</th> 
-            </tr>
-        </thead>
         <tbody>
-        {% for facture in factures %}
-
-               {# <td>{{ commande.com_id }}</td>
-               <td>{{ commande.date|date("Y-m-d H:i:s") }}</td>
-                <td>{{ commande.p_nom }}</td>
-                <td>{{ commande.prix }}</td>
-                 <td>{{ commande.quantite }}</td> #}
-                 <td>{{ commande.adresse_livraison }}</td>
-                 <td>{{ commande.adresse_facturation }}</td>
+            {% for commande in commandes %}
+                <tr>
+                    <td colspan="6">{{ commande.com_id }}</td>
+                      <td colspan="5">{{ commande.date|date("Y-m-d H:i:s") }}</td> 
+                <td colspan="6">{{ commande.p_nom }}</td>
+                <td colspan="6">{{ commande.prix }}</td>
+                 <td colspan="6">{{ commande.quantite }}</td>
+                 <td colspan="6">{{ commande.adresse_livraison }}</td>
+                 <td colspan="6">{{ commande.adresse_facturation }}</td>
                  
-                  </tr>
-        {% else %}
-            <tr>
-                <td colspan="6">no records found</td>
-            </tr>
-        {% endfor %}
+                    <!-- ... Ajoutez les autres colonnes avec les données nécessaires -->
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="6">Aucun enregistrement trouvé</td>
+                </tr>
+            {% endfor %}
         </tbody>
+    </table> #}
 
-
-   
-   
-    <table class="table">
+    <div class='container'>
+        <div class='row'>    
+            <img src="/images/logoFacture.jpg" class="logo col-6"> 
+                <div class='col-6 my-auto'>
+                    <div>Facture N° {{ facId }}</div>
+                     <div>(Commande N°  {{ comId }}  du  {{ comDate ? comDate|date('Y-m-d') : '' }})</div>
+                      <div>Date : {{ facDate ? facDate|date('Y-m-d') : '' }}</div>
+                      
+                </div>
+            <div class='border mb-2 py-2'>
+            Client : n°{{ utiId }},  {{ adresse }} , {{ tel }}, {{ email }}
+            </div>
+            <div class='border py-3'>
+            Adresse de facturation : {{ adresseFac }}
+            </div>
+        </div>
+    
+    <div class='mt-5'> Description de la commande </div>
+    <table class="table table-bordered">
         <thead>
             <tr>
-                 <th>n° commande</th>
-                 <th>date</th>
-                <th>produits</th>
-                <th>prix</th>
-                <th>quantite</th>
-                 <th>adresse livraison</th> 
-                 <th>adresse_facturation</th> 
+                <th>REF.</th>
+                <th>DESIGNATION</th>
+                <th>P U</th>
+                <th>Quantité</th>
+                <th>Total</th>
+              
             </tr>
         </thead>
         <tbody>
         {% for commande in commandes %}
-
-               <td>{{ commande.com_id }}</td>
-               <td>{{ commande.date|date("Y-m-d H:i:s") }}</td>
-                <td>{{ commande.p_nom }}</td>
-                <td>{{ commande.prix }}</td>
-                 <td>{{ commande.quantite }}</td>
-                 <td>{{ commande.adresse_livraison }}</td>
-                 <td>{{ commande.adresse_facturation }}</td>
-                 
-                  </tr>
+            <tr>
+             <td>{{ commande.p_id }}</td>
+              <td>{{ commande.p_nom }}</td>
+                <td>{{ commande.p_prix }}</td>
+                <td>{{ commande.p_quantite }}</td>
+                <td>{{ commande.p_SousTotal }}</td>
+                
+            </tr>
         {% else %}
             <tr>
-                <td colspan="6">no records found</td>
+                <td colspan="10">no records found</td>
             </tr>
         {% endfor %}
+           {# {% for total in totals %}
+           <td>Transporteur</td>
+           <td>{{ total.p_tra }} </td>
+           <td> {{ total.p_fdp }} </td>
+           <td> </td>
+            <td> {{ total.p_fdp }} €</td>
+                          {% endfor %}
         </tbody>
+        <tfoot>
+          {% for total in totals %}
+                        <tr>
+                         <td colspan="2"></td>
+                            <td colspan="2">Total</td>
+                            
+                            <td> {{ total.p_total }} €</td>
+                        </tr>
+                          {% endfor %}
+          </tfoot> #}
     </table>
 
-     <a href="{{ path('app_commande_crud_show', {'id': .id}) }}">show</a>
+   
+    </div>
 {% endblock %}

@@ -60,6 +60,51 @@ class CommandeRepository extends ServiceEntityRepository
         // to get just one result:
         // $product = $query->setMaxResults(1)->getOneOrNullResult();
     }
+    public function myCommandeByCom($id): array
+{
+    // automatically knows to select Products
+    // the "p" is an alias you'll use in the rest of the query
+    $qb = $this->createQueryBuilder('c')
+        ->select('Distinct c.id as c_id, u.id as user_id, u.email as user_email, u.telephone as user_tel, produit.id as p_id, produit.nom as p_nom, panier.prix as p_prix, panier.quantite as p_quantite, panier.prix * panier.quantite as p_SousTotal, c.adresse_fact as c_adFac, c.adresse as c_adLiv, c.date_commande as c_date, c.id as c_facId, u.nom as nom,  u.prenom as prenom' )
+        ->join('c.utilisateur', 'u')
+        // ->join('u.adresse', 'ad')
+        ->join('c.commandeDetails', 'panier')
+        ->join('panier.pro', 'produit')
+        ->where('c.id = :comId')
+        ->setParameter('comId', $id);
+       // ->orderBy('p.price', 'ASC');
+
+    // if (!$includeUnavailableProducts) {
+    //     $qb->andWhere('p.available = TRUE');
+    // }
+
+    $query = $qb->getQuery();
+
+    //return $query->execute();
+    return $query->getResult();
+
+    // to get just one result:
+    // $product = $query->setMaxResults(1)->getOneOrNullResult();
+}
+// public function totalPrixCom($id): array
+// {
+    
+//     $qb = $this->createQueryBuilder('c')
+//         ->select('t.tra_nom as p_tra,t.tra_prix as p_fdp, SUM(panier.pan_prix_unite * panier.pan_quantite) + t.tra_prix as p_total' )
+//         ->join('c.com_uti', 'u')
+//         ->join('c.com_transporteur', 't')
+//         ->join('c.paniers', 'panier')
+//         ->join('panier.pan_pro', 'produit')
+//         ->where('c.id = :comId')
+//         ->setParameter('comId', $id);
+       
+
+//     $query = $qb->getQuery();
+
+//     return $query->execute();
+ 
+// }
+
 
 
     

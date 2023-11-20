@@ -4,6 +4,8 @@
 
 {% block title %}Facture{% endblock %}
 
+    
+
 {% block body %}
 
   
@@ -11,10 +13,10 @@
 
    <div class="container">
 		<div class="row">
-			<div class="col-7  text-center ">
-   <h1>facture N°</h1>  <td>FACT{{ facture.id+1000 }}</td>
+			<div class="col-12  text-center ">
+   <h3 class='body2'>facture N°</h3>  <td>FACT{{ facture.id+1000 }}</td>
    <br><br><br>
-   <h1>commande N°</h1>  <td>COM{{ facture.idCommande+1000 }}</td>
+   <h1 class='body2'>commande N°</h1>  <td>COM{{ facture.idCommande+1000 }}</td>
 
 
 
@@ -27,11 +29,11 @@
    
         <thead>
        
-        <tr>
-         <th>nom</th>
-                <th>prenom</th>
-                <th>email</th>
-                <th>telephone</th>
+        <tr class='body2'>
+                <th class=body>nom</th>
+                <th class=body>prenom</th>
+                <th class=body>email</th>
+                <th class=body>telephone</th>
                 </tr>
         </thead>
         <tbody>
@@ -51,57 +53,38 @@
 		<div class="row">
 			<div class="col-12 sm-3  text-center ">
             <div>
-            <h4>Adresse livraison</h4> <td>{{ facture.adresseLivraison }}</td><br><br>
-                <h4>Adresse facturation</h4>
+            <h4 class='body2'>Adresse livraison</h4> <td>{{ facture.adresseLivraison }}</td><br><br>
+                <h4 class='body2'>Adresse facturation</h4>
                 {# <td>{{ facture.adresseLivraison }}</td><br> #}
                  <td>{{ facture.adresseFacturation }}</td><br>
                  </div>
-                <br><br>
+                <br><br><br><br><br>
 
 
-    <ta<div class="container">
-		<div class="row">
-			<div class="col-12 sm-3 text-center ">
-                {# <th>commande</th> #}
-                {# <th>date commande</th> #}
-               
+   <table class="table">
+   
+        <thead>
+       
+        <tr class='body2'>
+         
+                <th class=body>produit</th>
+                <th class=body>prix</th>
+                <th class=body>quantite</th>
+                </tr>
+        </thead>
+        <tbody>
+        <tr>
+                <td>{{ facture.produit }}</td>
+                <td>{{ facture.prix }}</td>
+                <td>{{ facture.quantite }}</td>
                 
-                <h4>produit</h4><td>{{ facture.produit }}</td>
-                <h4>prix</h4> <td>{{ facture.prix }}</td>
-                <h4>quantite</h4><td>{{ facture.quantite }}</td><br>
-
-                
-                {# <th>Commentaire</th>
-                <th>actions</th> #}
-            </tr>
-        {# </thead>
-        <tbody> #}
-
-            {# <tr>
-                {# <td>{{ facture.idCommande }}</td>
-                #}
-                {# <td>{{ facture.comId }}</td> #}
-                
-                {# <td>{{ facture.produit }}</td><br> 
-                <td>{{ facture.prix }}</td><br>
-                <td>{{ facture.quantite }}</td><br>
-                <td> #}
-                     {# <a href="{{ path('app_facture_show', {'id': facture.id}) }}">show</a>  #}
-                    {# <a href="{{ path('app_commande_crud_edit', {'id': commande.id}) }}">edit</a> #}
-                {# </td>
-            </tr>  #}
-              {# <a href="{{ path('app_facture_show', {'id': facture.id}) }}">show</a> #}
-        {# {% else %}
-            <tr>
-                <td colspan="6">no records found</td>
-            </tr>
-        {% endfor %} #}
+             
         </tbody>
-    
+    </table>
+        <tbody> 
 
-    {# <a href="{{ path('app_facture_index') }}">back to list</a>
+           
 
-    {# <a href="{{ path('app_facture_edit', {'id': facture.id}) }}">edit</a> #}
-
+  
     {# {{ include('facture/_delete_form.html.twig') }}  #}
 {% endblock %}

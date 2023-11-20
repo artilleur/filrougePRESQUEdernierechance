@@ -171,17 +171,18 @@ $checkout_session = \Stripe\Checkout\Session::create([
         $facture->setCliNom($this->getUser()->getNom());
         $facture->setCliPrenom($this->getUser()->getPrenom());
         $facture->setCliEmail($this->getUser()->getEmail());
-        $facture->setCliTelephone($this->getUser()->gettelephone());
+        $facture->setCliTelephone($this->getUser()->getTelephone());
         $facture->setAdresseLivraison($order->getAdresse());
         $facture->setAdresseFacturation($order->getAdresseFact());
         $facture->setProduit($order3->getNom());
         $facture->setPrix($order2->getPrix());
         $facture->setQuantite($order2->getQuantite());
-
-
+        // $facture->setComId($order->getId());
+        
+        // $facture->setComDetail($order2->getId());
 
         $facture->setIdCommande($order->getId());
-        $em->persist($order);
+        $em->persist($order2);
         $em->persist($facture);
         $em->flush();
         //return $this->render('order/succes.html.twig');
