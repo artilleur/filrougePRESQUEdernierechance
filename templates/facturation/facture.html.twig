@@ -65,9 +65,33 @@
           <tfoot>
     <tr>
         <td colspan="3"></td>
-        <td colspan="3">Total</td>
+        <td colspan="3">Total ttc</td>
         <td>{{ finalTotal | round(2) }} €</td>
     </tr>
+     <tr>
+        <td colspan="3"></td>
+        <td colspan="3">frais de port </td>
+       {% if finalTotal<100 %}
+        <td colspan="3">5</td>
+
+        
+       
+    </tr>
+    <tr>
+     <td colspan="6"></td>
+     <td>{{ finalTotal | round(2)+5  }} €</td>
+     </tr>
+     {% else  %}
+     <td colspan="3">0</td>
+
+        
+       
+    </tr>
+    <tr>
+     <td colspan="6"></td>
+     <td>{{ finalTotal | round(2)+0  }} €</td>
+     </tr>
+     {% endif %}
 </tfoot>
           
     </table>
