@@ -44,6 +44,7 @@ class FacturationController extends AbstractController
             // 'totals' => $commandeRepository->totalPrixCom($id),
             // 'commandes' => $commandes,
         ]);
+        
     }
 }
 

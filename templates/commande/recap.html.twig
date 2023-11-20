@@ -32,11 +32,7 @@
                                 <td>{{ element.product.prix }} €</td>
                                 <td>{{ element.quantity }}</td>
                                 <td>{{ element.quantity * element.product.prix }} €</td>
-                                {# <td>
-                                    <a href="{{ path('cart_add', {id: element.product.id}) }}" class="btn btn-success">+</a>
-                                    <a href="{{ path('cart_remove', {id: element.product.id}) }}" class="btn btn-warning">-</a>
-                                    <a href="{{ path('cart_delete', {id: element.product.id}) }}" class="btn btn-danger">Supprimer</a>
-                                </td> #}
+                                
                             </tr>
                         {% else %}
                             <tr>
@@ -48,13 +44,7 @@
 
                        
 
-                        {# <tr>
-                            <td colspan="3">sous Total</td>
-                            
-                            <td>{{ soustotal  }} €</td>
-                                <a href="{{ path('app_adresse_index' ) }}" class="btn btn-danger">modifier</a>
-                                
-                          </tr> #}
+                        
                          <tr>
                             <td colspan="3">tva</td>
                             
@@ -98,7 +88,7 @@
 
                 
                 
-                 {# <a href="{{ path('app_commande_add') }}" class="btn btn-primary">Valider la commande</a>  #}
+                 
                 </div>
 
 

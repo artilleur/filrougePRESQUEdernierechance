@@ -7,44 +7,24 @@
 
 
 {% block body %}
-    {# <table class="table">
-        <!-- ... Votre tableau avec les en-têtes -->
-
-        <tbody>
-            {% for commande in commandes %}
-                <tr>
-                    <td colspan="6">{{ commande.com_id }}</td>
-                      <td colspan="5">{{ commande.date|date("Y-m-d H:i:s") }}</td> 
-                <td colspan="6">{{ commande.p_nom }}</td>
-                <td colspan="6">{{ commande.prix }}</td>
-                 <td colspan="6">{{ commande.quantite }}</td>
-                 <td colspan="6">{{ commande.adresse_livraison }}</td>
-                 <td colspan="6">{{ commande.adresse_facturation }}</td>
-                 
-                    <!-- ... Ajoutez les autres colonnes avec les données nécessaires -->
-                </tr>
-            {% else %}
-                <tr>
-                    <td colspan="6">Aucun enregistrement trouvé</td>
-                </tr>
-            {% endfor %}
-        </tbody>
-    </table> #}
-
+   
     <div class='container'>
         <div class='row'>    
-            <img src="/images/logoFacture.jpg" class="logo col-6"> 
+            <img src="/images/image.png" class="logo "> 
                 <div class='col-6 my-auto'>
-                    <div>Facture N° {{ facId }}</div>
-                     <div>(Commande N°  {{ comId }}  du  {{ comDate ? comDate|date('Y-m-d') : '' }})</div>
-                      <div>Date : {{ facDate ? facDate|date('Y-m-d') : '' }}</div>
+                    <div>Facture N° {{ facId }}</div><br><br>
+                     <div>(Commande N°  {{ comId }}  du  {{ comDate ? comDate|date('Y-m-d') : '' }})</div><br>
+                      <div>Date : {{ facDate ? facDate|date('Y-m-d') : '' }}</div><br>
                       
                 </div>
+                <br><br>
             <div class='border mb-2 py-2'>
-            Client : n°{{ utiId }},  {{ adresse }} , {{ tel }}, {{ email }}
+            <br>
+            Client :  <br> {{ adresse }} ,<br>email: {{ email }},<br>tel: {{ tel }}<br><br>
             </div>
+            
             <div class='border py-3'>
-            Adresse de facturation : {{ adresseFac }}
+            Adresse de facturation :<br> {{ adresseFac }}<br>
             </div>
         </div>
     
@@ -56,11 +36,14 @@
                 <th>DESIGNATION</th>
                 <th>P U</th>
                 <th>Quantité</th>
-                <th>Total</th>
+                <th>Total HT</th>
+                <th>Tva</th>
+                <th>prix ttc</th>
               
             </tr>
         </thead>
         <tbody>
+        {% set finalTotal = 0 %}
         {% for commande in commandes %}
             <tr>
              <td>{{ commande.p_id }}</td>
@@ -68,13 +51,16 @@
                 <td>{{ commande.p_prix }}</td>
                 <td>{{ commande.p_quantite }}</td>
                 <td>{{ commande.p_SousTotal }}</td>
-                
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="10">no records found</td>
-            </tr>
-        {% endfor %}
+                <td>20%</td>
+                <td>{{ (commande.p_SousTotal* 1.2) | round(2) }}</td>
+             {% set finalTotal = finalTotal + (commande.p_SousTotal * 1.2) %}
+    </tr>
+{% else %}
+    <tr>
+        <td colspan="10">no records found</td>
+    </tr>
+{% endfor %}
+
            {# {% for total in totals %}
            <td>Transporteur</td>
            <td>{{ total.p_tra }} </td>
@@ -93,6 +79,14 @@
                         </tr>
                           {% endfor %}
           </tfoot> #}
+          <tfoot>
+    <tr>
+        <td colspan="3"></td>
+        <td colspan="3">Total</td>
+        <td>{{ finalTotal | round(2) }} €</td>
+    </tr>
+</tfoot>
+          
     </table>
 
    
