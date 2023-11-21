@@ -9,10 +9,16 @@ use App\Entity\Utilisateur;
 use App\Entity\SousCategorie;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 
 class AppFixtures extends Fixture
 {
+    private $hasher;
+
+    public function __construct(UserPasswordHasherInterface $hasher){
+        $this->hasher = $hasher;
+    }
     public function load(ObjectManager $manager): void
     {
         $c1 = new Categorie();
@@ -113,7 +119,7 @@ class AppFixtures extends Fixture
 
                 $sc14= new SousCategorie();
                 $sc14->setNom("arbalete");
-                $sc14->setImage("Capture_d’écran_2020-04-11_à_10.49.30.png");
+                $sc14->setImage("public/images/Capture_d’écran_2020-04-11_à_10.49.30.png");
                 $sc14->setCategorie($c4);
                 $manager->persist($sc14);
         
@@ -457,7 +463,9 @@ class AppFixtures extends Fixture
                             $user1->setCp('80136');
                             $user1->setTelephone("0603689748");
                             $user1->setEmail('denoyellemarc@orange.fr');
-                            $user1->setPassword("123456");
+                            $user1->setRoles(["ROLE_ADMIN"]);
+                            $password = $this->hasher->hashPassword($user1, "123456");
+                            $user1->setPassword($password);
                             $user1->setPays("france");
                             
                             
@@ -493,7 +501,9 @@ class AppFixtures extends Fixture
                             $user2->setCp('80160');
                             $user2->setTelephone("0603689784");
                             $user2->setEmail('papieluc@orange.fr');
-                            $user2->setPassword("987654");
+                            $user2->setRoles(["ROLE_USER"]);
+                            $password = $this->hasher->hashPassword($user2, "987654");
+                            $user2->setPassword($password);
                             $user2->setPays("france");
                             
                             

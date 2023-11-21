@@ -58,20 +58,21 @@ $(this).toggleClass("fa-heart fa-heart-o");
 																																																																																																																																																																																																																																																																																																																																																																																																																																																							">
 
 						<div class="container-fluid">
-							<a class="navbar-brand" href="#"></a>
-							<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
-								<span class="navbar-toggler-icon"></span>
-							</button>
-							<div class="collapse navbar-collapse" id="navbarColor01">
-								<ul class="navbar-nav me-auto">
-									<li class="nav-item">
-										<a class="nav-link" href="{{ path('app_home') }}">Acceuil</a>
-										
-										
-									</li>
+							<a class="navbar-brand" href="/">navbar</a>
+							<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="/">Categories</a>
+                            </li>
+                            {# <li class="nav-item">
+                            <a class="nav-link" href="/panier">Panier {{ app.session.get('panier') | length}}</a>
+                            </li> #}
 
 
-									<li class="nav-item dropdown">
+									{# <li class="nav-item dropdown">
 										<a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
 										<div class="dropdown-menu">
 											<a class="dropdown-item" href="/">categorie</a>
@@ -82,7 +83,7 @@ $(this).toggleClass("fa-heart fa-heart-o");
 										</div>
 										<div>
 
-											<li>
+											<li> #}
 
 
 												<form class="d-flex" action="{{ path('app_search')}}" method='POST'>
@@ -96,31 +97,43 @@ $(this).toggleClass("fa-heart fa-heart-o");
 													{# <a class='nav-link' href="{{ path('app_register') }}">Creation compte client</a> #}
 													{# <a class='nav-link' href="{{ path('app_commande_mon_index', {'id': app.user.id}) }}">mes commande</a> #}
 
+												<li>
+                                            <form >
+													<a class='nav-link' href="{{ path('app_register') }}">Creation compte client</a>
+													{# <a class='nav-link' href="{{ path('app_login') }}">login client</a> #}
+                                                   
 												</form>
 											</li>
-
-											
 
 
 										</div>
 									</li>
+									 {% if app.user %}
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/logout">Logout</a>
+                                </li>
+                            {% else %}
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/login">Login client</a>
+                                </li>
+                            {% endif %}
 								</ul>
 
 
-								<u
+								
 
 								<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
 
 
 								
 
-								<li>
+								{# <li>
                                             <form >
 													<a class='nav-link' href="{{ path('app_register') }}">Creation compte client</a>
-													<a class='nav-link' href="{{ path('app_login') }}">login client</a>
+													{# <a class='nav-link' href="{{ path('app_login') }}">login client</a> #}
 
-												</form>
-											</li>
+												{# </form>
+											</li>  #}
 
 									<li class="nav-item">
 										<a class="nav-link active" aria-current="page" href="/cart">
@@ -177,8 +190,9 @@ $(this).toggleClass("fa-heart fa-heart-o");
      email: coutellerieartilleur@artilleur.fr</br>
      tel plateforme:0685896574</p>
 </ul>
-</div></div><div class="row"><div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-5"><ul class="list-unstyled list-inline social text-center"><li class="list-inline-item"><a href="javascript:void();">
+</div></div>
+{# <div class="row"><div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-5"><ul class="list-unstyled list-inline social text-center"><li class="list-inline-item"><a href="javascript:void();">
 <i class="fa fa-facebook"></i></a></li><li class="list-inline-item"><a href="javascript:void();">
 <i class="fa fa-twitter"></i></a></li><li class="list-inline-item"><a href="javascript:void();">
 <i class="fa fa-instagram"></i></a></li><li class="list-inline-item"><a href="javascript:void();">
-<i class="fa fa-google-plus"></i></a></li><li class="list-inline-item"><a href="javascript:void();" target="_blank">
+<i class="fa fa-google-plus"></i></a></li><li class="list-inline-item"><a href="javascript:void();" target="_blank"> #}

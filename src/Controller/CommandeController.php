@@ -141,7 +141,7 @@ if ($this->isGranted('ROLE_ADMIN')) {
 
 } elseif ($this->isGranted('ROLE_COMMERCE')) {
    
-   $tva = 0; 
+   $tva = 20; 
 
 }
 
@@ -151,7 +151,7 @@ elseif ($this->isGranted('ROLE_USER')) {
 
 } else  {
    
-   $tva = 0;
+   $tva = 20;
 }
 
        foreach($panier as $id => $quantity){
@@ -198,9 +198,7 @@ elseif ($this->isGranted('ROLE_USER')) {
         $total= $total;
         $commentaire = $form->get('commentaire')->getData();
         $adresseFacture = $form->get('adresse_fact')->getData();
-        // $transporteur = $form->get('transporteur')->getData();
-        // $fdp = $form->get('transporteur')->getData()->getTraPrix();
-      
+       
     
 
 
@@ -213,11 +211,7 @@ elseif ($this->isGranted('ROLE_USER')) {
        $commande->setAdresseFact(str_replace("[-br]", " ",$adresseFacture));
         $commande->setAdresse(str_replace("[-br]", " ",$adresseLivraison));
         $commande->setCommentaire($commentaire);
-        // $commande->setComtransporteur($transporteur);
-        // $commande->setComIsPaid(false);
-        // $commande->setComMoyenPaiement('stripe');
-        // $moyenPaiement = $commande->getComMoyenPaiement();
-    //    $commande->setReference(uniqid());
+       
        //on parcourt le panier pour ceer les details de commande
        foreach($panier as $item => $quantity){
         $commandeDetails = new CommandeDetail();
