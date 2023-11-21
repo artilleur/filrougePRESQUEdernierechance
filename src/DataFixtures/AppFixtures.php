@@ -23,17 +23,17 @@ class AppFixtures extends Fixture
     {
         $c1 = new Categorie();
         $c1->setNom("arme de jet");
-        $c1->setImage("41mQ+evAKBL._SS400_.jpg");
+        $c1->setImage("bloggif_655cb04c8971c.gif");
         $manager->persist($c1);
 
         $c2 = new Categorie();
         $c2->setNom("coutellerie");
-        $c2->setImage("index.jpeg");
+        $c2->setImage("bloggif_655cb156f2d8b.gif");
         $manager->persist($c2);
 
         $c3 = new Categorie();
         $c3->setNom("rasage");
-        $c3->setImage("Top3_rasoir_papillon_pour_debuter_1920x750.jpeg");
+        $c3->setImage("bloggif_655cb29659364.gif");
         $manager->persist($c3);
 
 
@@ -53,13 +53,13 @@ class AppFixtures extends Fixture
 
                 $souscategorie1 = new SousCategorie();
                 $souscategorie1->setNom("shuriken");
-                $souscategorie1->setImage("41mQ+evAKBL._SS400_.jpg");
+                $souscategorie1->setImage("giphy6.gif");
                 $souscategorie1->setCategorie($c1);
                 $manager->persist($souscategorie1);
 
                 $sc2 = new SousCategorie();
                 $sc2->setNom("hache");
-                $sc2->setImage("hache-corne-de-cerf.png");
+                $sc2->setImage("giphy7.gif");
                 $sc2->setCategorie($c1);
                 $manager->persist($sc2);
 
@@ -71,7 +71,7 @@ class AppFixtures extends Fixture
 
                 $sc4 = new SousCategorie();
                 $sc4->setNom("hachette");
-                $sc4->setImage("hachette1.jpg");
+                $sc4->setImage("bloggif_655cad9e2671f.gif");
                 $sc4->setCategorie($c1);
                 $manager->persist($sc4);
 
@@ -107,19 +107,19 @@ class AppFixtures extends Fixture
 
                 $sc12 = new SousCategorie();
                 $sc12->setNom("rasoir_mecanique");
-                $sc12->setImage("merkur-34c-penche.jpg");
+                $sc12->setImage("giphy5.gif");
                 $sc12->setCategorie($c3);
                 $manager->persist($sc12);
 
                 $sc13 = new SousCategorie();
                 $sc13->setNom("arc");
-                $sc13->setImage("arc2.jpg");
+                $sc13->setImage("giphy4.gif");
                 $sc13->setCategorie($c4);
                 $manager->persist($sc13);
 
                 $sc14= new SousCategorie();
                 $sc14->setNom("arbalete");
-                $sc14->setImage("public/images/Capture_d’écran_2020-04-11_à_10.49.30.png");
+                $sc14->setImage("giphy3.gif");
                 $sc14->setCategorie($c4);
                 $manager->persist($sc14);
         

@@ -5,20 +5,25 @@
 {% block title %}Facturation Facture{% endblock %}
 
 {% block body %}
-    <table class="table">
-        <!-- ... Votre tableau avec les en-têtes -->
-
-        <tbody>
-            {% for commande in commandes %}
-                <tr>
-                    <td colspan="6">{{ commande.com_id }}</td>
-                    <!-- ... Ajoutez les autres colonnes avec les données nécessaires -->
-                </tr>
-            {% else %}
-                <tr>
-                    <td colspan="6">Aucun enregistrement trouvé</td>
-                </tr>
-            {% endfor %}
+    <div class='container'>
+        <div class='row'>    
+            <img src="/images/logo20.png" class="logo "> 
+                <div class='col-6 my-auto'>
+                    <div>Bon de livraison N° BON000{{ facId }}</div><br><br>
+                     <div>(Commande N°  {{ comId }}  du  {{ comDate ? comDate|date('Y-m-d') : '' }})</div><br>
+                      <div>Date : {{ facDate ? facDate|date('Y-m-d') : '' }}</div><br>
+                      
+                </div>
+                <br><br>
+            <div class='border mb-2 py-2'>
+            <br>
+            Client :  <br> {{ adresse }} ,<br>email: {{ email }},<br>tel: {{ tel }}<br><br>
+            </div>
+            
+            {# <div class='border py-3'>
+            Adresse de facturation :<br> {{ adresseFac }}<br>
+            </div> #}
+        </div>
         </tbody>
     </table>
 {% endblock %}
