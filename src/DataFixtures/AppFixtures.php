@@ -119,7 +119,7 @@ class AppFixtures extends Fixture
 
                 $sc14= new SousCategorie();
                 $sc14->setNom("arbalete");
-                $sc14->setImage("giphy3.gif");
+                $sc14->setImage("bloggif_655cb8daea66f.gif");
                 $sc14->setCategorie($c4);
                 $manager->persist($sc14);
         
