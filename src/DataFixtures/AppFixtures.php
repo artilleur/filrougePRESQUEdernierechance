@@ -39,7 +39,7 @@ class AppFixtures extends Fixture
 
         $c4 = new Categorie();
         $c4->setNom("archerie");
-        $c4->setImage("arc.jpg");
+        $c4->setImage("bloggif_655cb4bb42b0f.gif");
         $manager->persist($c4);
 
       
