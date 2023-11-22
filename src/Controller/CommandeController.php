@@ -40,9 +40,7 @@ class CommandeController extends AbstractController
         // $form=$this->createForm(CommandeType::class,data: null);
         // dd($this->getUser()->getNom());
         $userData=$this->getUser();
-        // dd($userData->getRoles());
-//$session->set('panier', []);
-        // On initialise des variables
+        
         $data = [];
         $total= 0;
         $soustotal = 0;
@@ -59,7 +57,7 @@ if ($this->isGranted('ROLE_ADMIN')) {
 
 } elseif ($this->isGranted('ROLE_COMMERCE')) {
     
-    $tva = 0; 
+    $tva = 15; 
 
 }
 
@@ -141,7 +139,7 @@ if ($this->isGranted('ROLE_ADMIN')) {
 
 } elseif ($this->isGranted('ROLE_COMMERCE')) {
    
-   $tva = 20; 
+   $tva = 15; 
 
 }
 

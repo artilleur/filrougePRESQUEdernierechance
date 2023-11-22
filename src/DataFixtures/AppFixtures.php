@@ -531,25 +531,46 @@ class AppFixtures extends Fixture
                             $adresse2->setUti($user2);
                             $manager->persist($adresse2);
 
-
-
-
                             
+                            $user3 = new Utilisateur();
+                            $user3->setNom("durant");
+                            $user3->setPrenom('luc');
+                            $user3->setAdresse("10 rue qui glisse");
+                            $user3->setVille("conty");
+                            $user3->setCp('80160');
+                            $user3->setTelephone("0603689784");
+                            $user3->setEmail('couteaux80@orange.fr');
+                            $user3->setRoles(["ROLE_COMMERCE"]);
+                            $password = $this->hasher->hashPassword($user3, "369258147");
+                            $user3->setPassword($password);
+                            $user3->setPays("france");
+                            $manager->persist($user3);
 
-                            
+                            $adresse1 = new Adresse();
+                            $adresse1->setNom("durant");
+                            $adresse1->setPrenom('luc');
+                            $adresse1->setAdresse("15 rue de la pompe");
+                            $adresse1->setVille("rivery");
+                            $adresse1->setCp('80136');
+                            $adresse1->setTelephone("0606548973");
+                            $adresse1->setPays('france');
+                            $adresse1->setUti($user3);
+                            $manager->persist($adresse1);
 
-       
+                            $adresse2 = new Adresse();
+                            $adresse2->setNom("durant");
+                            $adresse2->setPrenom('luc');
+                            $adresse2->setAdresse("15 avenue marechal foch");
+                            $adresse2->setVille("amiens");
+                            $adresse2->setCp('80090');
+                            $adresse2->setPays('france');
+                            $adresse2->setTelephone("0625487956");
+                            $adresse2->setUti($user3);
+                            $manager->persist($adresse2);
 
 
 
 
-
-
-
-
-
-
-
-        $manager->flush();
+                             $manager->flush();
     }
 }

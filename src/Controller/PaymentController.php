@@ -62,20 +62,25 @@ class PaymentController extends AbstractController
             ];
 
         
-        $soustotal += $soustotal+ $product->getPrix() * $product->getQuantite();
+        $soustotal +=  $product->getPrix() * $product->getQuantite();
 
      }
 
      // Calculate TVA based on user's role
- if ($this->isGranted('ROLE_USER')) {
-    $tva =20 ;
-} else {
+ if ($this->isGranted('ROLE_COMMERCE')) {
+    $tva =15;
+} 
+ elseif ($this->isGranted('ROLE_ADMIN')) {
+    $tva =20;
+    
+} 
+else {
     $tva = 20;
 }
 
-// Calculate total including TVA
-$totaltva +=round( $soustotal+($soustotal*$tva/100),2);
-// Add TVA as a separate line item in the stripe checkout
+
+$totaltva +=round( $soustotal+($soustotal*$tva/100),2) * 100;
+
 $producStripe[] = [
     'price_data' => [
         'currency' => 'eur',

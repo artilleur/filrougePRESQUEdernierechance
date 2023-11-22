@@ -53,6 +53,7 @@
                 <td>{{ commande.p_SousTotal }}</td>
                 <td>20%</td>
                 <td>{{ (commande.p_SousTotal* 1.2) | round(2) }}</td>
+                
              {% set finalTotal = finalTotal + (commande.p_SousTotal * 1.2) %}
     </tr>
 {% else %}
