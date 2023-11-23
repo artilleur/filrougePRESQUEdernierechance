@@ -477,7 +477,7 @@ class AppFixtures extends Fixture
                             $adresse1->setAdresse("15 rue de la pompe");
                             $adresse1->setVille("rivery");
                             $adresse1->setCp('80136');
-                            $adresse1->setTelephone("0606548973");
+                            $adresse1->setTelephone("0603689748");
                             $adresse1->setPays('france');
                             $adresse1->setUti($user1);
                             $manager->persist($adresse1);
@@ -515,7 +515,7 @@ class AppFixtures extends Fixture
                             $adresse2->setAdresse("10 rue qui glisse");
                             $adresse2->setVille("conty");
                             $adresse2->setCp('80160');
-                            $adresse2->setTelephone("0606548984");
+                            $adresse2->setTelephone("0603689784");
                             $adresse2->setPays('france');
                             $adresse2->setUti($user2);
                             $manager->persist($adresse2);
@@ -535,10 +535,10 @@ class AppFixtures extends Fixture
                             $user3 = new Utilisateur();
                             $user3->setNom("durant");
                             $user3->setPrenom('luc');
-                            $user3->setAdresse("10 rue qui glisse");
+                            $user3->setAdresse("25 rue qui glisse");
                             $user3->setVille("conty");
                             $user3->setCp('80160');
-                            $user3->setTelephone("0603689784");
+                            $user3->setTelephone("0603682691");
                             $user3->setEmail('couteaux80@orange.fr');
                             $user3->setRoles(["ROLE_COMMERCE"]);
                             $password = $this->hasher->hashPassword($user3, "369258147");
@@ -549,10 +549,10 @@ class AppFixtures extends Fixture
                             $adresse1 = new Adresse();
                             $adresse1->setNom("durant");
                             $adresse1->setPrenom('luc');
-                            $adresse1->setAdresse("15 rue de la pompe");
+                            $adresse1->setAdresse("25 rue qui glisse");
                             $adresse1->setVille("rivery");
                             $adresse1->setCp('80136');
-                            $adresse1->setTelephone("0606548973");
+                            $adresse1->setTelephone("0603682691");
                             $adresse1->setPays('france');
                             $adresse1->setUti($user3);
                             $manager->persist($adresse1);

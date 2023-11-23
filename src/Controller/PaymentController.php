@@ -68,7 +68,7 @@ class PaymentController extends AbstractController
 
      // Calculate TVA based on user's role
  if ($this->isGranted('ROLE_COMMERCE')) {
-    $tva =15;
+    $tva =20;
 } 
  elseif ($this->isGranted('ROLE_ADMIN')) {
     $tva =20;

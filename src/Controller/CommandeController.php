@@ -50,14 +50,14 @@ class CommandeController extends AbstractController
 
 if ($this->isGranted('ROLE_ADMIN')) {
 
-    $tva = 20; // TVA rate (20%)
+    $tva = 20; 
 } elseif ($this->isGranted('ROLE_COMMERCIAL')) {
     
     $tva = 20; 
 
 } elseif ($this->isGranted('ROLE_COMMERCE')) {
     
-    $tva = 15; 
+    $tva = 20; 
 
 }
 
@@ -67,7 +67,7 @@ elseif ($this->isGranted('ROLE_USER')) {
 
 } else  {
     
-    $tva = 0;
+    $tva = 20;
 }
 
         foreach($panier as $id => $quantity){
@@ -132,14 +132,14 @@ elseif ($this->isGranted('ROLE_USER')) {
 
 if ($this->isGranted('ROLE_ADMIN')) {
 
-   $tva = 20; // TVA rate (20%)
+   $tva = 20;
 } elseif ($this->isGranted('ROLE_COMMERCIAL')) {
    
    $tva = 20; 
 
 } elseif ($this->isGranted('ROLE_COMMERCE')) {
    
-   $tva = 15; 
+   $tva = 20; 
 
 }
 
@@ -151,6 +151,14 @@ elseif ($this->isGranted('ROLE_USER')) {
    
    $tva = 20;
 }
+if ($this->isGranted('ROLE_COMMERCE')) {
+   
+    $remise = 5; 
+ 
+ } else  {
+    
+    $remise = 0;
+ }
 
        foreach($panier as $id => $quantity){
            $product = $produitRepository->find($id);
@@ -166,7 +174,7 @@ elseif ($this->isGranted('ROLE_USER')) {
            
            }
 
-           $totaltva +=round( $soustotal+($soustotal*$tva/100),2);
+           $totaltva +=round( $soustotal+($soustotal*$tva/100)-($soustotal*$remise/100),2);
 
 
 
@@ -193,6 +201,7 @@ elseif ($this->isGranted('ROLE_USER')) {
     //dd( $form->get('transporteur')->getData());
     if ($form->isSubmitted() && $form->isValid()) {
         $adresseLivraison = $form->get('adresse')->getData();
+        $telephone = $form->get('telephone')->getData();
         $total= $total;
         $commentaire = $form->get('commentaire')->getData();
         $adresseFacture = $form->get('adresse_fact')->getData();
@@ -207,7 +216,9 @@ elseif ($this->isGranted('ROLE_USER')) {
        //on remplit la commande
        $commande->setUtilisateur($this->getUser());
        $commande->setAdresseFact(str_replace("[-br]", " ",$adresseFacture));
+       $commande->setAdresseFact(str_replace("[-br]", " ",$telephone));
         $commande->setAdresse(str_replace("[-br]", " ",$adresseLivraison));
+        $commande->setAdresse(str_replace("[-br]", " ",$telephone));
         $commande->setCommentaire($commentaire);
        
        //on parcourt le panier pour ceer les details de commande

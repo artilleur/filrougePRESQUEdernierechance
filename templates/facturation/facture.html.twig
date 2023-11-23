@@ -38,12 +38,28 @@
                 <th>Quantité</th>
                 <th>Total HT</th>
                 <th>Tva</th>
-                <th>prix ttc</th>
+                <th>prix ttc(+ remise)</th>
+                 <th>remise</th>
+                  <th>prix final</th>
               
             </tr>
         </thead>
         <tbody>
         {% set finalTotal = 0 %}
+         {# {% if 'ROLE=ROLE_COMMERCE' %}
+        {% set tva = 15 %}
+        {% else %}
+        {% set tva = 20 %}
+
+        {% endif %} #}
+        
+        {# {% if 'ROLE=ROLE_ADMIN' %}
+        {% set tva = 10 %}
+        {% endif %}
+        {% if 'ROLE=ROLE_USER' %}
+        {% set tva = 20 %}
+        {% endif %} #}
+
         {% for commande in commandes %}
             <tr>
              <td>{{ commande.p_id }}</td>
@@ -51,10 +67,11 @@
                 <td>{{ commande.p_prix }}</td>
                 <td>{{ commande.p_quantite }}</td>
                 <td>{{ commande.p_SousTotal }}</td>
-                <td>20%</td>
-                <td>{{ (commande.p_SousTotal* 1.2) | round(2) }}</td>
+                <td>{{ tva }}%</td>
+                <td>{{ (commande.p_SousTotal* tva/100)+commande.p_SousTotal -(commande.p_SousTotal * remise/100)| round(2) }}</td>
+                <td>{{ remise }}%</td>
                 
-             {% set finalTotal = finalTotal + (commande.p_SousTotal * 1.2) %}
+             {% set finalTotal = finalTotal + (commande.p_SousTotal * tva/100)+commande.p_SousTotal-(commande.p_SousTotal * remise/100) | round(2) %}
     </tr>
 {% else %}
     <tr>
